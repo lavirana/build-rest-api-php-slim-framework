@@ -1,4 +1,4 @@
-FROM php:8.1.23-fpm-bookworm
+FROM php:8.2-fpm-bookworm
 
 RUN apt-get update
 
@@ -38,6 +38,10 @@ RUN set -eux; \
 	} > /usr/local/etc/php/conf.d/opcache-recommended.ini
 
 RUN pecl install xdebug && docker-php-ext-enable xdebug
+
+RUN apt-get update && apt-get install -y \
+    libmagickwand-dev --no-install-recommends && \
+    rm -rf /var/lib/apt/lists/*
 
 RUN pecl install imagick-3.7.0 && docker-php-ext-enable imagick
 
