@@ -5,6 +5,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 require_once __DIR__ . '/../middlewares/jsonBodyParser.php';
 require_once __DIR__ . '/../middlewares/authentication.php';
+require_once __DIR__ . '/../middlewares/dataValidator.php';
 
 require_once __DIR__ . '/../src/config.php';
 require_once __DIR__ . '/../src/db.php';
@@ -12,7 +13,6 @@ require_once __DIR__ . '/../src/db.php';
 // All the API Routes
 
 // Home
-
 $app->get('/', function(Request $request, Response $response) {
 
     $response_array = [
@@ -81,7 +81,9 @@ $app->post('/players/add', function(Request $request, Response $response){
     $response->getBody()->write(json_encode($result));
     return $response->withHeader('content-type', 'application/json');
 
-})->add($jsonBodyParser);
+})->add($jsonBodyParser)
+->add($dataValidator)
+->add($apiKeyVerifier);
 
 
 
@@ -111,7 +113,8 @@ $app->put('/player/{id}', function(Request $request, Response $response, array $
     return $response->withHeader('content-type', 'application/json');
     
   })->add($jsonBodyParser)
-  ->add($authentication);
+  ->add($dataValidator)
+  ->add($apiKeyVerifier);
 
 
 // Delete a Player based on id
@@ -130,4 +133,4 @@ $app->delete('/player/{id}', function(Request $request, Response $response, arra
     $response->getBody()->write(json_encode($result));
     return $response->withHeader('content-type', 'application/json');
     
-  })->add($authentication);
+  })->add($apiKeyVerifier);

@@ -26,9 +26,17 @@ class ComposerStaticInit7977eef748771865b94b80ecfa82906d
             'Psr\\Container\\' => 14,
             'Psr\\Cache\\' => 10,
         ),
+        'M' => 
+        array (
+            'MabeEnum\\' => 9,
+        ),
         'L' => 
         array (
             'Laravel\\SerializableClosure\\' => 28,
+        ),
+        'J' => 
+        array (
+            'JsonSchema\\' => 11,
         ),
         'I' => 
         array (
@@ -78,9 +86,17 @@ class ComposerStaticInit7977eef748771865b94b80ecfa82906d
         array (
             0 => __DIR__ . '/..' . '/psr/cache/src',
         ),
+        'MabeEnum\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/marc-mabe/php-enum/src',
+        ),
         'Laravel\\SerializableClosure\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/serializable-closure/src',
+        ),
+        'JsonSchema\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/justinrainbow/json-schema/src/JsonSchema',
         ),
         'Invoker\\' => 
         array (
@@ -110,6 +126,7 @@ class ComposerStaticInit7977eef748771865b94b80ecfa82906d
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Stringable' => __DIR__ . '/..' . '/marc-mabe/php-enum/stubs/Stringable.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
