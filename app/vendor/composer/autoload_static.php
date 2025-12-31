@@ -15,6 +15,7 @@ class ComposerStaticInit7977eef748771865b94b80ecfa82906d
     public static $prefixLengthsPsr4 = array (
         'S' => 
         array (
+            'Symfony\\Component\\Dotenv\\' => 25,
             'Slim\\Psr7\\' => 10,
             'Slim\\' => 5,
         ),
@@ -56,6 +57,10 @@ class ComposerStaticInit7977eef748771865b94b80ecfa82906d
     );
 
     public static $prefixDirsPsr4 = array (
+        'Symfony\\Component\\Dotenv\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/dotenv',
+        ),
         'Slim\\Psr7\\' => 
         array (
             0 => __DIR__ . '/..' . '/slim/psr7/src',
