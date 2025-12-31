@@ -2,7 +2,9 @@
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
+
 require_once __DIR__ . '/../middlewares/jsonBodyParser.php';
+require_once __DIR__ . '/../middlewares/authentication.php';
 
 require_once __DIR__ . '/../src/config.php';
 require_once __DIR__ . '/../src/db.php';
@@ -108,7 +110,8 @@ $app->put('/player/{id}', function(Request $request, Response $response, array $
     $response->getBody()->write(json_encode($result));
     return $response->withHeader('content-type', 'application/json');
     
-  })->add($jsonBodyParser);
+  })->add($jsonBodyParser)
+  ->add($authentication);
 
 
 // Delete a Player based on id
@@ -127,4 +130,4 @@ $app->delete('/player/{id}', function(Request $request, Response $response, arra
     $response->getBody()->write(json_encode($result));
     return $response->withHeader('content-type', 'application/json');
     
-  });
+  })->add($authentication);
